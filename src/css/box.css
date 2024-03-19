@@ -1,0 +1,33 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+  padding: 10px;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 10px;
+}
+.box.win {
+  border-color: blue;
+}
+.box.lose {
+  border-color: red;
+}
+.box.tie {
+  border-color: #000;
+}
+.box h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.box img {
+  display: block;
+  height: 160px;
+  margin-bottom: 10px;
+}
+.box strong {
+  font-size: 20px;
+}
