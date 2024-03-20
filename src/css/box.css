@@ -9,6 +9,15 @@
   background-color: #fff;
   border: 5px solid #000;
   border-radius: 10px;
+
+  @media screen and (max-width: 960px) {
+    width: 280px;
+    height: 300px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 220px;
+    height: 220px; 
+  }
 }
 .box.win {
   border-color: blue;
@@ -27,7 +36,21 @@
   display: block;
   height: 160px;
   margin-bottom: 10px;
+
+  @media screen and (max-width: 960px) {
+    height: 150px;
+  }
+  @media screen and (max-width: 600px) {
+    height: 100px;
+  }
 }
 .box strong {
   font-size: 20px;
+
+  @media screen and (max-width: 960px) {
+    font-size: 25px;
+  }
+  @media screen and (max-width: 960px) {
+    font-size: 20px;
+  }
 }

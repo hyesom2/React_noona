@@ -5,6 +5,12 @@
   transform: translate(-50%, -50%);
   width: 450px;
   height: 600px;
+  z-index: 10;
+
+  @media screen and (max-width: 600px) {
+    width: 360px;
+    height: 500px;
+  }
 }
 
 .how-wrap img {

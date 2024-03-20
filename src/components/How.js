@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import '../css/how.css';
 
 const How = (props) => {
@@ -10,4 +10,4 @@ const How = (props) => {
   )
 }
 
-export default How
+export default How;
