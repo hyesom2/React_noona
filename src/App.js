@@ -50,10 +50,8 @@ const App = () => {
       getCurrentLocation();
     } else {
       getWeatherByCities();
-      // eslint-disable-next-line
     }
     setInterval(getTime, 1000);
-    // eslint-disable-next-line
   }, [ city ]);
 
   return (
