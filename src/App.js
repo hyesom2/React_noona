@@ -1,51 +1,38 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState , useEffect } from 'react'
 import './App.css';
-import ClipLoader from "react-spinners/ClipLoader";
 import WeatherBox from './components/WeatherBox';
 import WeatherButton from './components/WeatherButton';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const App = () => {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState('');
-  const [cities] = useState(["tokyo", "paris", "italy", "Seattle", "vietnam"]);
-  const [time, setTime] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errorApi, setErrorApi] = useState('');
+  const cities = ["tokyo", "paris", "italy", "Seattle", "vietnam"];
+  const [time, setTime] = useState('');
 
   const getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  }
-  const showPosition = (position) => {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-    getWeatherByCurrentLocation(lat, lon);
-  }
+    navigator.geolocation.getCurrentPosition((position) => {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      getWeatherByCurrentLocation(lat, lon);
+    });
+  };
   const getWeatherByCurrentLocation = async(lat, lon) => {
-    try {
-      let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=acf059b9bd86fab63152d717e9d9db3c`;
-      setLoading(true);
-      let response = await fetch(url);
-      let data = await response.json();
-      setWeather(data);
-      setLoading(false);
-    } catch(error) {
-      setErrorApi(error.message);
-      setLoading(false);
-    }
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=acf059b9bd86fab63152d717e9d9db3c&units=metric`;
+    setLoading(true);
+    let response = await fetch(url);
+    let data = await response.json();
+    setWeather(data);
+    setLoading(false);
   }
-  const getWeatherByCity = async() => {
-    try {
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=acf059b9bd86fab63152d717e9d9db3c`;
-      setLoading(true);
-      let response = await fetch(url);
-      let data = await response.json();
-      setWeather(data);
-      setLoading(false);
-    } catch(error) {
-      setErrorApi(error.message);
-      setLoading(false);
-    }
+  const getWeatherByCities = async() => {
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=acf059b9bd86fab63152d717e9d9db3c&units=metric`;
+    setLoading(true);
+    let response = await fetch(url);
+    let data = await response.json();
+    setWeather(data);
+    setLoading(false);
   }
   const getTime = () => {
     let data = new Date();
@@ -59,35 +46,29 @@ const App = () => {
   }
 
   useEffect(() => {
-    setInterval(getTime, 1000);
-    if(city === "") {
-      setLoading(true);
+    if( city === "") {
       getCurrentLocation();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     } else {
-      setLoading(true);
-      getWeatherByCity();
+      getWeatherByCities();
+      // eslint-disable-next-line
     }
-     // eslint-disable-next-line
+    setInterval(getTime, 1000);
+    // eslint-disable-next-line
   }, [city]);
-  
+
   return (
     <div className="main">
       {
-        loading 
-        ?
-        <ClipLoader loading={ loading } size={ 130 } />
-        :
-          !errorApi
-          ?
-          <div>
-            <WeatherBox weather={ weather } time={ time } />
-            <WeatherButton cities={ cities } setCity={ setCity } selected={ city }/>
-          </div>
-          : errorApi     
+        loading ?
+        <ClipLoader loading={ loading } size={ 130 } /> :
+        <>
+          <WeatherBox weather={ weather } time={ time } />
+          <WeatherButton cities={ cities } setCity={ setCity } selected={ city } />
+        </>
       }
     </div>
   )
 }
 
-export default App
+export default App;

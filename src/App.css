@@ -14,9 +14,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background-image: url('https://a.cdn-hotels.com/gdcs/production49/d918/3b4285a3-1f5e-4684-8df0-c210f3d32076.jpg');
+  background-image: url('https://img.freepik.com/free-photo/blue-sky-with-white-cotton-clouds_23-2148282541.jpg');
+  /* background-image: url('https://a.cdn-hotels.com/gdcs/production49/d918/3b4285a3-1f5e-4684-8df0-c210f3d32076.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
