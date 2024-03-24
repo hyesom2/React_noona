@@ -53,7 +53,7 @@ const App = () => {
       // eslint-disable-next-line
     }
     setInterval(getTime, 1000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [ city ]);
 
   return (
