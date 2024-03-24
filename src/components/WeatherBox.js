@@ -11,7 +11,7 @@ const WeatherBox = ({ weather, time }) => {
       <div className="box-left">
         {/* <h1 className="city">{ weather && weather.name }</h1> */}
         <h1 className="city">{ weather?.name }</h1>
-        <img src={`http://openweathermap.org/img/wn/${weather && weather.weather[0].icon }@2x.png`} alt="" />
+        <img src={`https://openweathermap.org/img/wn/${weather && weather.weather[0].icon }.png`} alt="" />
         <p className="state">{ weather && weather.weather[0].description }</p>
         <span className="line"></span>
         <p className="time">{ time }</p>
