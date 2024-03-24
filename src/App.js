@@ -46,16 +46,15 @@ const App = () => {
   }
 
   useEffect(() => {
-    if( city === "") {
+    if( city === '' ) {
       getCurrentLocation();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     } else {
       getWeatherByCities();
       // eslint-disable-next-line
     }
     setInterval(getTime, 1000);
-    // eslint-disable-next-line
-  }, [city]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ city ]);
 
   return (
     <div className="main">
