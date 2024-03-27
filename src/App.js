@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ProductAll from './pages/ProductAll';
+import Login from './pages/Login';
+import ProductDetail from './pages/ProductDetail';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<ProductAll />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/product:id" element={<ProductDetail />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
 export default App;
+
+// 1. 총 3개의 페이지 (전체상품 / 로그인 / 상품상세페이지)
+// 2. 전체상품페이지 : 전체 상품을 볼 수 있다.
+// 3. 로그인페이지 : 로그인버튼을 클릭, 상품페이지클릭시(로그인X)
+// 4. 상품상세페이지 : 로그인O 경우 (단, 로그아웃하면 로그인페이지가 보이도록)
+// 5. 로그인을하면 로그아웃으로, 로그아웃하면 로그인으로

@@ -1,0 +1,37 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  transition: transform 300ms ease-in-out;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.card .choice {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.card h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.card strong {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card .new {
+  font-size: 12px;
+}
