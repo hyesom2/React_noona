@@ -1,18 +1,24 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProductAll from './pages/ProductAll';
 import Login from './pages/Login';
-import ProductDetail from './pages/ProductDetail';
+import PrivateRoute from './route/PrivateRoute';
 
 const App = () => {
+  const [authenticate, setAuthenticate] = useState(false) // true:로그인
+  useEffect(() => {
+    console.log("로그인", authenticate);
+  }, [authenticate]);
+
   return (
     <div>
-      <Navbar />
+      <Navbar authenticate={ authenticate } setAuthenticate={ setAuthenticate }/>
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/product:id" element={<ProductDetail />} />
+        <Route path="/login" element={<Login setAuthenticate={ setAuthenticate } />} />
+        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} />
       </Routes>
     </div>
   )

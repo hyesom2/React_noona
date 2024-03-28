@@ -31,6 +31,7 @@
 .logo {
   width: 100px;
   height: 40px;
+  cursor: pointer;
 }
 .logo img {
   width: 100%;
@@ -42,6 +43,7 @@
 }
 .info-item {
   margin-right: 10px;
+  cursor: pointer;
 }
 .info-item:last-child {
   margin-right: 0;
@@ -70,8 +72,9 @@
 
 .form-search {
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #333;
 }
 .form-search input {
   margin-left: 10px;

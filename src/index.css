@@ -31,3 +31,8 @@ a {
 input {
   border: none;
 }
+
+button {
+  background-color: inherit;
+  border: none;
+}

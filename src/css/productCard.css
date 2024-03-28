@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
+  cursor: pointer;
   transition: transform 300ms ease-in-out;
 }
 .card:hover {

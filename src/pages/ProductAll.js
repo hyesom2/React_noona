@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
@@ -17,7 +18,17 @@ const ProductAll = () => {
 
   return (
     <div>
-      <ProductCard productList={ productList } />
+      <Container>
+        <Row>
+          {
+            productList.map((item, index) => (
+              <Col lg={3} key={ index }>
+                <ProductCard item={ item } />
+              </Col>
+            ))
+          }
+        </Row>
+      </Container>
     </div>
   )
 }
