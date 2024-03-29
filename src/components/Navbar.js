@@ -10,10 +10,20 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();
   const goToLoginPage = () => {
     navigate("/login");
-  }
+  };
   const goToHomePage = () => {
     navigate("/");
-  }
+  };
+  const search = (event) => {
+    if( event.key === "Enter") {
+      event.preventDefault();
+      // 1. 입력한 검색어를 읽어와서
+      let keyword = event.target.value;
+      // 2. url을 바꿔준다.
+      navigate(`/?q=${keyword}`);
+    }
+  };
+
   return (
     <div className="navContainer">
       <div className="navbarWrap">
@@ -59,7 +69,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         </ul>
         <form className="form-search">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <input type="text" placeholder="제품 검색" />
+          <input type="text" placeholder="제품 검색" onKeyPress={ (event) => search(event) } />
         </form>
       </div>
     </div>
