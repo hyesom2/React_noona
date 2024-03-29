@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProductAll from './pages/ProductAll';
@@ -14,7 +13,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar authenticate={ authenticate } setAuthenticate={ setAuthenticate }/>
+      <Navbar authenticate={ authenticate } setAuthenticate={ setAuthenticate } />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route path="/login" element={<Login setAuthenticate={ setAuthenticate } />} />
