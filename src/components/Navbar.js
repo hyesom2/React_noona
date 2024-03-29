@@ -45,10 +45,17 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1280px-H%26M-Logo.svg.png" alt="" />
         </div>
         <ul className="info-list">
-          <li className="info-item" onClick={ () => goToLoginPage() }>
-            <FontAwesomeIcon icon={ faUser } />
-            <span>로그인</span>
-          </li>
+          {
+            authenticate === true 
+            ?
+            <li className="info-item" onClick={ () => setAuthenticate(false) }>
+              <FontAwesomeIcon icon={ faUser } /><span>로그아웃</span>
+            </li>
+            :
+            <li className="info-item" onClick={ () => goToLoginPage() }>
+              <FontAwesomeIcon icon={ faUser } /><span>로그인</span>
+            </li>
+          }
           <li className="info-item">
             <FontAwesomeIcon icon={faHeart} /><span>즐겨찾기</span>
           </li>
