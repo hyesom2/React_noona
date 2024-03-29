@@ -59,7 +59,6 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   };
   const mobileMenuOpen = () => {
     setMenuOpen(true);
-    console.log(menuOpen);
   }
 
   return (
@@ -140,10 +139,10 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
               </li>
             }
             <li className="info-item">
-              <FontAwesomeIcon icon={faHeart} /><span>즐겨찾기</span>
+              <FontAwesomeIcon icon={faHeart} />
             </li>
             <li className="info-item">
-              <FontAwesomeIcon icon={faBagShopping} /><span>쇼핑백(0)</span>
+              <FontAwesomeIcon icon={faBagShopping} />
             </li>
           </InfoList>
         </Right>
@@ -180,7 +179,6 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 100%;
   padding: 16px 32px;
 
   @media screen and (max-width: 768px) {
@@ -202,6 +200,7 @@ const NavbarTop = styled.div`
   .service-item {
     margin-right: 10px;
     padding: 0 8px;
+    cursor: pointer;
   }
   .service-item:last-child {
     margin-right: 0;
@@ -217,7 +216,6 @@ const NavbarBottom = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
 
   .navbar-list {
     display: flex;
@@ -229,6 +227,7 @@ const NavbarBottom = styled.div`
 
   .navbar-item {
     padding: 0 16px;
+    cursor: pointer;
   }
 
   @media screen and (max-width: 768px) {
@@ -256,6 +255,24 @@ const Logo = styled.h1`
 
     img {
       height: 24px;
+    }
+  }
+`;
+
+const InfoList = styled.ul`
+  display: flex;
+  justify-content: flex-end;
+
+  .info-item {
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    span {
+      margin-left: 6px;
     }
   }
 `;
@@ -294,24 +311,6 @@ const MenuButton = styled.button`
   align-items: center;
   width: 48px;
   height: 48px;
-`;
-
-const InfoList = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  .info-item {
-    margin-right: 10px;
-    cursor: pointer;
-
-    &:last-child {
-      margin-right: 0;
-    }
-
-    span {
-      margin-left: 6px;
-    }
-  }
 `;
 
 const MobileSidebar = styled.div`

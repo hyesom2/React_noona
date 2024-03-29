@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
-import { styled } from 'styled-components';
 
 const ProductDetail = () => {
   let { id } = useParams();
@@ -19,34 +21,34 @@ const ProductDetail = () => {
   }, []);
 
   return (
-    <div>
-      <Container>
-        <Row>
-          <Col lg={6}>
-            <ProductImg>
-              <img src={ product?.img } alt="" />
-            </ProductImg>
-          </Col>
-          <Col lg={6}>
-            <ProductInfo>
-              <h1 className="title">{ product?.title }</h1>
-              <strong>￦ { product?.price }</strong>
-              <span>{ product?.choice ? "Conscious choice" : "" }</span>
-              <span>{ product?.new ? "신제품" : "" }</span>
-              <span>사이즈</span>
-              <SizeButtonGroup>
-                {
-                  product?.size.map((size, index) => (
-                    <button type="button" key={index}>{ size }</button>
-                  ))
-                }
-              </SizeButtonGroup>
-              <BuyButton type="submit">구매하기</BuyButton>
-            </ProductInfo>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <Row>
+        <Col lg={6}>
+          <ProductImg>
+            <img src={ product?.img } alt="" />
+          </ProductImg>
+        </Col>
+        <Col lg={6}>
+          <ProductInfo>
+            <h1 className="title">{ product?.title }</h1>
+            <strong className="price">￦ { product?.price }</strong>
+            <span className="choice">{ product?.choice ? "Conscious choice" : "" }</span>
+            <span className="new">{ product?.new ? "신제품" : "" }</span>
+            <span className="size">사이즈</span>
+            <SizeButtonGroup>
+              {
+                product?.size.map((size, index) => (
+                  <button type="button" key={index}>{ size }</button>
+                ))
+              }
+            </SizeButtonGroup>
+            <BuyButton type="submit">
+              <FontAwesomeIcon icon={faBagShopping} className="add-icon" />추가
+            </BuyButton>
+          </ProductInfo>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
@@ -69,10 +71,30 @@ const ProductInfo = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 24px 0 24px 32px;
 
   .title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .choice {
+    font-size: 13px;
+    margin: 14px 0;
+  }
+
+  .new {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .size {
+    font-size: 13px;
+    margin-bottom: 7px;
   }
 `;
 
@@ -108,4 +130,8 @@ const BuyButton = styled.button`
   color: #fff;
   font-size: 16px;
   padding: 13px 26px;
+
+  .add-icon {
+    margin-right: 10px;
+  }
 `;
