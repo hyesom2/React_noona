@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authenticateAction } from '../redux/actions/authenticateAction';
 
 const Login = ({ setAuthenticate }) => {
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const loginUser = (event) => {
     event.preventDefault();
-    setAuthenticate(true);
+    // setAuthenticate(true);
+    dispatch(authenticateAction.login(id, pw));
     navigate("/");
   };
 
@@ -22,9 +29,9 @@ const Login = ({ setAuthenticate }) => {
       </LoginTop>
       <LoginForm onSubmit={ (event) => loginUser(event) }>
         <label>아이디</label>
-        <input type="email" />
+        <input type="email" onChange={(e) => setId(e.target.value)} />
         <label>비밀번호</label>
-        <input type="password" />
+        <input type="password" onChange={(e) => setPw(e.target.value)} />
         <button type="submit" className="login-button">로그인</button>
       </LoginForm>
     </Container>

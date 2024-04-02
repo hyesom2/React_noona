@@ -1,24 +1,31 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import ProductAll from './pages/ProductAll';
 import Login from './pages/Login';
 import PrivateRoute from './route/PrivateRoute';
+import { useSelector } from 'react-redux';
 
 const App = () => {
-  const [authenticate, setAuthenticate] = useState(false);
+  const authenticate = useSelector((state) => state.auth.authenticate);
+  // const [authenticate, setAuthenticate] = useState(false);
+
   useEffect(() => {
     console.log("로그인", authenticate);
   }, [authenticate]);
 
   return (
     <Container>
-      <Navbar authenticate={ authenticate } setAuthenticate={ setAuthenticate } />
+      {/* <Navbar authenticate={ authenticate } setAuthenticate={ setAuthenticate } /> */}
+      <Navbar authenticate={ authenticate } />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login setAuthenticate={ setAuthenticate } />} />
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} />
+        {/* <Route path="/login" element={<Login setAuthenticate={ setAuthenticate } />} />
+        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/product/:id" element={<PrivateRoute />} />
       </Routes>
     </Container>
   )

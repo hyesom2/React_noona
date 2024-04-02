@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import ProductCard from '../components/ProductCard';
+// import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
+import ProductCard from '../components/ProductCard';
+import { productAction } from '../redux/actions/productAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
+  // const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.product.productList);
   const [query] = useSearchParams();
+  const dispatch = useDispatch();
 
-  const getProducts = async() => {
+  const getProducts = () => {
     let searchQuery = query.get("q") || "";
     // let url = `http://localhost:5000/products`;
-    let url = `https://my-json-server.typicode.com/hyesom2/3_shopping-mall/products?q=${searchQuery}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    setProductList(data);
+    // let url = `https://my-json-server.typicode.com/hyesom2/3_shopping-mall/products?q=${searchQuery}`;
+    // let response = await fetch(url);
+    // let data = await response.json();
+    // setProductList(data);
+    // dispatch({ type: "", payload: {}}) -> 처럼 하면 바로 store로 가버림
+    dispatch(productAction.getProducts(searchQuery)); // searchQuery를 매개변수로 전달하자!
   }
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faBagShopping, faEllipsis, faMagnifyingGlass, faBars, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const menulist = {
@@ -41,6 +42,11 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     }
   };
   const [menuOpen, setMenuOpen] = useState(false);
+  // const authenticate = useSelector((state) => state.auth.authenticate);
+  const dispatch = useDispatch();
+  const Logout = () => {
+    dispatch({ type: "LOGOUT", payload: {authenticate: authenticate} })
+  }
   const navigate = useNavigate();
   const goToLoginPage = () => {
     navigate("/login");
@@ -85,7 +91,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           {
             authenticate === true 
             ?
-            <li className="info-item" onClick={ () => setAuthenticate(false) }>
+            <li className="info-item" onClick={ Logout }>
               <FontAwesomeIcon icon={ faUser } /><span>로그아웃</span>
             </li>
             :
