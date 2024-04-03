@@ -5,21 +5,23 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
-import { productAction } from '../redux/actions/productAction';
+// import { productAction } from '../redux/actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchDetailProducts } from '../redux/reducer/productReducer';
 
 const ProductDetail = () => {
   let { id } = useParams();
   // const [product, setProduct] = useState(null);
   const product = useSelector((state) => state.product.selectedProduct);
   const dispatch = useDispatch();
-  const getProductDetail = async() => {
+  const getProductDetail = () => {
     // let url = `http://localhost:5000/products/${id}`;
     // let url = `https://my-json-server.typicode.com/hyesom2/3_shopping-mall/products/${id}`;
     // let response = await fetch(url);
     // let data = await response.json();
     // setProduct(data);
-    dispatch(productAction.getProductDetail(id));
+    // dispatch(productAction.getProductDetail(id));
+    dispatch(fetchDetailProducts(id));
   }
   useEffect(() => {
     getProductDetail();

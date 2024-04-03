@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { authenticateAction } from '../redux/actions/authenticateAction';
+// import { authenticateAction } from '../redux/actions/authenticateAction';
+import { authenticateAction } from '../redux/reducer/authenticateReducer';
 
-const Login = ({ setAuthenticate }) => {
+const Login = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ const Login = ({ setAuthenticate }) => {
   const loginUser = (event) => {
     event.preventDefault();
     // setAuthenticate(true);
-    dispatch(authenticateAction.login(id, pw));
+    // dispatch(authenticateAction.login(id, pw));
+    dispatch(authenticateAction.authLogin(id, pw));
     navigate("/");
   };
 

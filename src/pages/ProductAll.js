@@ -4,8 +4,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductCard from '../components/ProductCard';
-import { productAction } from '../redux/actions/productAction';
+// import { productAction } from '../redux/actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../redux/reducer/productReducer';
 
 const ProductAll = () => {
   // const [productList, setProductList] = useState([]);
@@ -21,7 +22,8 @@ const ProductAll = () => {
     // let data = await response.json();
     // setProductList(data);
     // dispatch({ type: "", payload: {}}) -> 처럼 하면 바로 store로 가버림
-    dispatch(productAction.getProducts(searchQuery)); // searchQuery를 매개변수로 전달하자!
+    // dispatch(productAction.getProducts(searchQuery)); // searchQuery를 매개변수로 전달하자!
+    dispatch(fetchProducts(searchQuery));
   }
 
   useEffect(() => {

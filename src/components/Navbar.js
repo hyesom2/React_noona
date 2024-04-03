@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faBagShopping, faEllipsis, faMagnifyingGlass, faBars, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
+import { authenticateAction } from '../redux/reducer/authenticateReducer';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const menulist = {
@@ -45,7 +46,8 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   // const authenticate = useSelector((state) => state.auth.authenticate);
   const dispatch = useDispatch();
   const Logout = () => {
-    dispatch({ type: "LOGOUT", payload: {authenticate: authenticate} })
+    // dispatch({ type: "LOGOUT", payload: {authenticate: authenticate} })
+    dispatch(authenticateAction.authLogout());
   }
   const navigate = useNavigate();
   const goToLoginPage = () => {

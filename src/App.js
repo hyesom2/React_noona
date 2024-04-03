@@ -1,5 +1,6 @@
 // import React, { useState, useEffect } from 'react';
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from './components/Navbar';
@@ -12,14 +13,15 @@ const App = () => {
   const authenticate = useSelector((state) => state.auth.authenticate);
   // const [authenticate, setAuthenticate] = useState(false);
 
-  useEffect(() => {
-    console.log("로그인", authenticate);
-  }, [authenticate]);
+  // useEffect(() => {
+  //   console.log("로그인", authenticate);
+  // }, [authenticate]);
 
   return (
     <Container>
       {/* <Navbar authenticate={ authenticate } setAuthenticate={ setAuthenticate } /> */}
       <Navbar authenticate={ authenticate } />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<ProductAll />} />
         {/* <Route path="/login" element={<Login setAuthenticate={ setAuthenticate } />} />
