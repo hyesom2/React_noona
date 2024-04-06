@@ -6,7 +6,7 @@
 // import { composeWithDevTools } from '@redux-devtools/extension';
 
 import { configureStore } from '@reduxjs/toolkit';
-import productReducer from './reducer/productReducer';
+import productReducer from './reducer/productSlice';
 import authenticateReducer from './reducer/authenticateReducer';
 
 // let store = createStore(reducer);

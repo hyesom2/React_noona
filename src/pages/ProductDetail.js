@@ -7,7 +7,7 @@ import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 // import { productAction } from '../redux/actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDetailProducts } from '../redux/reducer/productReducer';
+import { fetchDetailProducts } from '../redux/reducer/productSlice';
 
 const ProductDetail = () => {
   let { id } = useParams();

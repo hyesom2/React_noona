@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import ProductCard from '../components/ProductCard';
 // import { productAction } from '../redux/actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../redux/reducer/productReducer';
+import { fetchProducts } from '../redux/reducer/productSlice';
 
 const ProductAll = () => {
   // const [productList, setProductList] = useState([]);
