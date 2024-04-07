@@ -40,7 +40,9 @@ const Footer = () => {
         </ul>
       </div>
       <div className={`${style.copyright}`}>
-        © 넷플릭스 대한민국
+        <p>© Copyright 2024-04-06~ (KimHyeonJu)</p>
+        <p>https://github.com/hyesom2/5_Netflix_Demo</p>
+        <p>상업적 용도가 아닌 개인 프로젝트 입니다.</p>
       </div>
     </div>
   )
