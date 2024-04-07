@@ -3,12 +3,14 @@ import './Homepage.style.css';
 import Banner from './components/Banner/Banner';
 import Footer from './components/Footer/Footer';
 import { Desktop } from '../../hooks/responsive';
+import PopularMovieSlide from './components/PopularMovieSlide/PopularMovieSlide';
 
 const Homepage = () => {
   return (
     <>
       <div className="homepage_wrapper">
         <Banner />
+        <PopularMovieSlide />
       </div>
       <Desktop>
         <Footer />
