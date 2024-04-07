@@ -20,11 +20,12 @@ const AppLayout = () => {
       <Desktop>
         <div className="container_desktop">
             <div className="left-menu">
-                <h1 className="pc-logo">
-                  <Link to="/" className="link">
-                    <img src={ process.env.PUBLIC_URL + '/images/NetflixLogo.png' } alt="netflix 로고" />
-                  </Link>
-                </h1>
+                <Link to="/" className="link">
+                  <h1 className="pc-logo">
+                    HyeonFlix
+                    {/* <img src={ process.env.PUBLIC_URL + '/images/NetflixLogo.png' } alt="netflix 로고" /> */}
+                  </h1>
+                </Link>
               <ul className="left-menu-list">
                   <li className="left-menu-item is-active">
                     <Link to="/" className="link">HOME</Link>
@@ -79,9 +80,12 @@ const AppLayout = () => {
       </Desktop>
       <Mobile>
         <div className="container_mobile">
-          <h1 className="mobile-logo">
-            <img src={ process.env.PUBLIC_URL + '/images/NetflixLogo_mobile.png' } alt="" />
-          </h1>
+          <Link to="/">
+            <h1 className="mobile-logo">
+              H
+              {/* <img src={ process.env.PUBLIC_URL + '/images/NetflixLogo_mobile.png' } alt="" /> */}
+            </h1>
+          </Link>
           {
             login === true 
             ?
