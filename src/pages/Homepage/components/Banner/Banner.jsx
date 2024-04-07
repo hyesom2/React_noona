@@ -14,16 +14,12 @@ const Banner = () => {
     <h1>{ error.message }</h1>
   }
 
+  const banner_background_url = `https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data?.results[1].poster_path}`;
+
   return (
     <>
     <Desktop>
-      <div
-        className="banner_background" 
-        style={{ backgroundImage: 
-          "url("
-          +`https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data?.results[1].poster_path}` 
-          + ")",
-        }}>
+      <div className="banner_background" style={{ backgroundImage: `url(${banner_background_url})`}}>
         <div className="banner_info">
           <h1 className="banner_info_title">{ data?.results[1].original_title }</h1>
           <ul className="banner_info_list">
