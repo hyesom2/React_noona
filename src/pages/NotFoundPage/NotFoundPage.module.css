@@ -41,3 +41,13 @@
   border-left: 2px solid #e50914;
   padding: 0 12px;
 }
+
+/* mobile */
+.error_title_mobile {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.error_desc_mobile {
+  font-size: 16px;
+  margin-bottom: 20px;  
+}
