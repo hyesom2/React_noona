@@ -5,7 +5,6 @@ import { Desktop, Mobile } from '../../../../hooks/responsive';
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
-  console.log(data);
 
   if(isLoading){
     <h1>Loading...</h1>
