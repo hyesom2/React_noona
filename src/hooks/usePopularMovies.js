@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import api from '../utils/api';
 
 const fetchPopularMovies = () => {
-  // return  api.get(`/genre/movie/list`);
   return  api.get(`/movie/popular`);
   // return  api.get(`/movie/popular?include_adult=true&include_video=true`);
   // return  api.get(`/movie/popular?language=ko-KR`);
