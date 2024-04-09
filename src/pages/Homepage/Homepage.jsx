@@ -1,16 +1,25 @@
 import React from 'react';
+// > css
 import './Homepage.style.css';
-import Banner from './components/Banner/Banner';
-import Footer from './components/Footer/Footer';
+// > responsive
 import { Desktop } from '../../hooks/responsive';
+// > components
+import Banner from './components/Banner/Banner';
 import PopularMovieSlide from './components/PopularMovieSlide/PopularMovieSlide';
+import NowPlayingMovieSlide from './components/NowPlayingMovieSlide/NowPlayingMovieSlide';
+import TopRatedMovieSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide';
+import TrendingMovieSlide from './components/TrendingMovieSlide/TrendingMovieSlide';
+import Footer from './components/Footer/Footer';
 
 const Homepage = () => {
   return (
     <>
       <div className="homepage_wrapper">
         <Banner />
+        <TopRatedMovieSlide />
         <PopularMovieSlide />
+        <NowPlayingMovieSlide />
+        <TrendingMovieSlide />
       </div>
       <Desktop>
         <Footer />
