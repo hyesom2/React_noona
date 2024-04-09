@@ -8,7 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 import { useTopRatedMoviesQuery } from '../../../../hooks/useTopRatedMovies';
 // > components
 import MovieCard from '../MovieCard/MovieCard';
-import TopRatedCard from '../TopRatedCard/TopRatedCard';
+import TopRatedBadge from '../TopRatedBadge/TopRatedBadge.jsx';
 
 const TopRatedMovieSlide = () => {
   const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
@@ -61,7 +61,7 @@ const TopRatedMovieSlide = () => {
         {
           data.results && data.results.map((movie, index) => (
             <div className="top_rated_wrap">
-              <TopRatedCard key={index} index={ index }/>
+              <TopRatedBadge key={index} index={ index }/>
               <MovieCard movie={movie} key={index} />
             </div>
           ))
