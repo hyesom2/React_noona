@@ -35,10 +35,10 @@ const MovieSlider = ({ title, movies, responsive }) => {
           title === "Top Rated Movies"
           ?
           movies && movies.map((movie, index) => (
-            <>
+            <div style={{position: "relative"}}>
               <TopRatedBadge index={ index }/>
               <MovieCard movie={movie} key={index} />
-            </>
+            </div>
           ))
           :
           movies && movies.map((movie, index) => (
