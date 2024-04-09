@@ -4,7 +4,9 @@ import './PopularMovieSlide.style.css';
 // > react-multi-carousel
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+// > hooks
 import { usePopularMoviesQuery } from '../../../../hooks/usePopularMovies';
+// > components
 import MovieCard from '../MovieCard/MovieCard';
 
 const PopularMovieSlide = () => {
@@ -32,8 +34,8 @@ const PopularMovieSlide = () => {
   };
 
   return (
-    <div className="popular-slide">
-      <h1 className="popular-title">Popular Movies</h1>
+    <div className="popular_slide">
+      <h1 className="popular_title">Popular Movies</h1>
       <Carousel
         responsive={responsive}
         additionalTransfrom={0}

@@ -1,28 +1,16 @@
-.popular-slide {
+.popular_slide {
   padding: 0 60px;
-  margin-bottom: 30px;
 }
-
-.popular-title {
+.popular_title {
   font-size: 26px;
   color: #E5E5E5;
 }
-/* .react-multi-carousel-list{
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-} */
 
 .slide_container {
-  position: absolute;
-  top: 0;
-  right: 0;
   width: 100%;
-  height: 350px;
+  height: 300px;
   z-index: 200;
 }
-
 .slide_item {
   display: flex;
   justify-content: center;
