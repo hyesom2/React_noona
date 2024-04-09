@@ -5,7 +5,7 @@ import './MovieCard.style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 // > react-router
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 
 const MovieCard = ({ movie }) => {
@@ -19,25 +19,27 @@ const MovieCard = ({ movie }) => {
     });
     return genreNameList;
   };
+  const navigate = useNavigate();
+  const getMovieDetails = () => {
+    navigate(`/movies/${movie?.id}`)
+  }
 
   return (
-    <Link to={`/${movie?.id}`}>
-      <div className="movie_card">
-        <img src={ `${img_base_url}` + movie?.poster_path } alt={ movie?.title } />
-        <div className="movie_card_info">
-          <h3 className="movie_title">{ movie?.title }</h3>
-          <ul className="movie_genre_list">
-            {
-              showGenre(movie?.genre_ids).map((genre, index) => (
-                <li className="movie_genre_item" key={ index }>{ genre }</li>
-              ))
-            }
-          </ul>
-          <p className="movie_release_date">{ movie?.release_date }</p>
-          <FontAwesomeIcon icon={faEllipsis} className="icon-more" />
-        </div>
+    <div className="movie_card" onClick={ getMovieDetails }>
+      <img src={ `${img_base_url}` + movie?.poster_path } alt={ movie?.title } />
+      <div className="movie_card_info">
+        <h3 className="movie_title">{ movie?.title }</h3>
+        <ul className="movie_genre_list">
+          {
+            showGenre(movie?.genre_ids).map((genre, index) => (
+              <li className="movie_genre_item" key={ index }>{ genre }</li>
+            ))
+          }
+        </ul>
+        <p className="movie_release_date">{ movie?.release_date }</p>
+        <FontAwesomeIcon icon={faEllipsis} className="icon-more" />
       </div>
-    </Link>
+    </div>
   )
 }
 
