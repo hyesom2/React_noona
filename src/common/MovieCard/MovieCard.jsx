@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 // > react-router
 import { Link } from 'react-router-dom';
-import { useMovieGenreQuery } from '../../../../hooks/useMovieGenre';
+import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 
 const MovieCard = ({ movie }) => {
   const img_base_url = `https://media.themoviedb.org/t/p/w300_and_h450_bestv2/`;
