@@ -79,6 +79,7 @@
 .banner_info_mobile h1 {
   font-size: 35px;
   font-weight: bold;
+  text-align: center;
   margin-bottom: 15px;
 }
 .banner_info_list_mobile {
