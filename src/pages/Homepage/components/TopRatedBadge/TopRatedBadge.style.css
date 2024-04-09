@@ -1,4 +1,4 @@
-.top_rated_card {
+.top_rated_badge {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,14 +16,14 @@
   height: 60px;
   z-index: 100;
 }
-.top_rated_card strong {
+.top_rated_badge strong {
   font-size: 14px;
 }
-.top_rated_card span {
+.top_rated_badge span {
   font-size: 20px;
   font-weight: bold;
 }
-.top_rated_card::after {
+.top_rated_badge::after {
   content: '';
 
 }
