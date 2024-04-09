@@ -34,7 +34,7 @@ const MovieCard = ({ movie }) => {
             }
           </ul>
           <p className="movie_release_date">{ movie?.release_date }</p>
-          <FontAwesomeIcon icon={faEllipsis} className="icon-more" />     
+          <FontAwesomeIcon icon={faEllipsis} className="icon-more" />
         </div>
       </div>
     </Link>
