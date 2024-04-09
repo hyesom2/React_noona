@@ -5,10 +5,11 @@ import './Homepage.style.css';
 import { Desktop } from '../../hooks/responsive';
 // > components
 import Banner from './components/Banner/Banner';
+import TopRatedMovieSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide';
 import PopularMovieSlide from './components/PopularMovieSlide/PopularMovieSlide';
 import NowPlayingMovieSlide from './components/NowPlayingMovieSlide/NowPlayingMovieSlide';
-import TopRatedMovieSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide';
 import TrendingMovieSlide from './components/TrendingMovieSlide/TrendingMovieSlide';
+import UpcomingMovieSlide from './components/UpcomingMovieSlide/UpcomingMovieSlide';
 import Footer from './components/Footer/Footer';
 
 const Homepage = () => {
@@ -20,6 +21,7 @@ const Homepage = () => {
         <PopularMovieSlide />
         <NowPlayingMovieSlide />
         <TrendingMovieSlide />
+        <UpcomingMovieSlide />
       </div>
       <Desktop>
         <Footer />

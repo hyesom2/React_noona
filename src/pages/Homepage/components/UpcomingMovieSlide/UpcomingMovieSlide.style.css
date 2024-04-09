@@ -1,0 +1,18 @@
+.upcoming_slide {
+  padding: 0 60px;
+}
+.upcoming_slide {
+  font-size: 26px;
+  color: #E5E5E5;
+}
+
+.slide_container {
+  width: 100%;
+  height: 300px;
+  z-index: 200;
+}
+.slide_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
