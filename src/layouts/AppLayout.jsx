@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import './AppLayout.style.css';
+import React, { useEffect, useState } from 'react';
+// > css (styled-components)
+import * as s from './AppLayout.style.js';
 // > icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBell, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 // > react-router
 import { Outlet, Link, useNavigate } from 'react-router-dom';
-// > responsive
-import { Desktop, Mobile } from '../hooks/responsive';
 // > components
-import SearchForm from './SearchForm/SearchForm';
+import SearchForm from './components/SearchForm/SearchForm';
+import MobileMenu from './components/MobileMenu/MobileMenu';
 
 const AppLayout = () => {
   const [login, setLogin] = useState(false); // 임시로
@@ -20,114 +20,102 @@ const AppLayout = () => {
     navigate(`/movies?query=${keyword}`); // 검색하면 url 변경
     setKeyword(""); // keyword 초기화
   }
+  const [widthSize, setWidthSize] = useState(window.innerWidth);
+  const handleResize = () => {
+    setWidthSize(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   return (
     <>
-      <Desktop>
-        <div className="container_desktop">
-            <div className="left-menu">
-                <Link to="/" className="link">
-                  <h1 className="pc-logo">
-                    HyeonFlix
-                    {/* <img src={ process.env.PUBLIC_URL + '/images/NetflixLogo.png' } alt="netflix 로고" /> */}
-                  </h1>
-                </Link>
-              <ul className="left-menu-list">
-                  <li className="left-menu-item is-active">
-                    <Link to="/" className="link">HOME</Link>
-                  </li>
-                <li className="left-menu-item">
-                  <Link to="/movies" className="link">MOVIES</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="right-menu">
-              {
-                login === true
-                ?
-                <ul className="right-menu-list">
-                  {
-                    SearchFormOpen === true 
-                    ?
-                    <li className="right-menu-item search-form">
-                      <form onSubmit={ searchByKeyword }>
-                        <input type="text" placeholder="search" className="search_input" value={ keyword } onChange={ (event) => setKeyword(event.target.value) } />
-                      </form>
-                    </li>
-                    :
-                    null
-                  }
-                  <li className="right-menu-item">
-                    <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} onClick={ () => setSearchFormOpen(true) } />
-                  </li>
-                  <li className="right-menu-item">
-                    <FontAwesomeIcon className="icon" icon={faBell} />
-                  </li>
-                  <li className="right-menu-item">
-                    <div className="user-profile">
-                      <img src={ process.env.PUBLIC_URL + '/images/Netflix-avatar.png' } alt="유저 프로필" />
-                      <FontAwesomeIcon className="icon-arrow" icon={faCaretDown} />
-                    </div>              
-                  </li>
-                </ul>
-                :
-                <ul className="right-menu-list">
-                  <li className="right-menu-item">
-                    무제한으로 즐기는 시리즈와 영화
-                  </li>
-                  <li className="right-menu-item">
-                    <button type="button" className="button-sign">지금 가입하기</button>
-                  </li>
-                  <li className="right-menu-item">
-                    <button type="button" className="button-login" onClick={() => setLogin(true)}>로그인</button>
-                  </li>
-                </ul>
-              }
-            </div>
-        </div>
-      </Desktop>
-      <Mobile>
-        <div className="container_mobile">
+      <s.Container>
+        <s.Left_Menu>
           <Link to="/">
-            <h1 className="mobile-logo">
-              H
-              {/* <img src={ process.env.PUBLIC_URL + '/images/NetflixLogo_mobile.png' } alt="" /> */}
-            </h1>
+            {
+              widthSize <= 1023
+              ?
+              <h1 className="logo">
+                <img src={ process.env.PUBLIC_URL + '/images/HYEONFLIX_logo_m.png' } alt="로고" />
+              </h1>
+              :
+              <h1 className="logo">
+                <img src={ process.env.PUBLIC_URL + '/images/HYEONFLIX_logo.png' } alt="로고" />
+              </h1>
+            }
           </Link>
+          <s.Left_Menu_List>
+            <li className="left_menu_item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="left_menu_item">
+              <Link to="/movies">Movies</Link>
+            </li>
+            <li className="left_menu_item">
+              <Link to="/tv_shows">TV Shows</Link>
+            </li>
+            <li className="left_menu_item">
+              <Link to="/my_list">My List</Link>
+            </li>
+          </s.Left_Menu_List>
+        </s.Left_Menu>
+        <s.Right_Menu>
           {
-            login === true 
+            login === true
             ?
-            <ul className="right-menu-list">
-              <li className="right-menu-item">
-                <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} onClick={ () => setSearchFormOpen(true) } />
+            <s.Right_Menu_List>
+              {
+                SearchFormOpen === true 
+                ?
+                <li className="right_menu_item">
+                  <form className="search_form" onSubmit={ searchByKeyword }>
+                    <input className="search_input" type="text" placeholder="search" value={ keyword } onChange={ (event) => setKeyword(event.target.value) } />
+                  </form>
+                </li>
+                :
+                null
+              }
+              <li className="right_menu_item">
+                {
+                  SearchFormOpen && widthSize <= 1023
+                  ?
+                  <SearchForm setSearchFormOpen={ setSearchFormOpen } />
+                  :
+                  null
+                }
+                <FontAwesomeIcon className="menu_icon" icon={faMagnifyingGlass} onClick={ () => setSearchFormOpen(true) } />
               </li>
-              <li className="right-menu-item">
-                <div className="user-profile">
+              <li className="right_menu_item">
+                <FontAwesomeIcon className="menu_icon" icon={faBell} />
+              </li>
+              <li className="right_menu_item">
+                <div className="user_profile">
                   <img src={ process.env.PUBLIC_URL + '/images/Netflix-avatar.png' } alt="유저 프로필" />
-                  <FontAwesomeIcon className="icon-arrow" icon={faCaretDown} />
+                  <FontAwesomeIcon className="icon_arrow" icon={faCaretDown} />
                 </div>              
               </li>
-            </ul>
+            </s.Right_Menu_List>
             :
-            <ul className="right-menu-list">
-              <li className="right-menu-item">
-                <button type="button" className="button-sign">지금 가입하기</button>
+            <s.Right_Menu_List>
+              <li className="right_menu_item">
+                <span>무제한으로 즐기는 시리즈와 영화</span>
               </li>
-              <li className="right-menu-item">
-                <button type="button" className="button-login" onClick={() => setLogin(true)}>로그인</button>
+              <li className="right_menu_item">
+                <s.Button type="button" className="sign">지금 가입하기</s.Button>
               </li>
-            </ul>
+              <li className="right_menu_item">
+                <s.Button type="button" className="login" onClick={() => setLogin(true)}>로그인</s.Button>
+              </li>
+            </s.Right_Menu_List>
           }
-        </div>
-        {
-        SearchFormOpen === true
-        ?
-        <SearchForm setSearchFormOpen={ setSearchFormOpen } />
-        :
-        null
-      }
-      </Mobile>
+        </s.Right_Menu>
+      </s.Container>
       <Outlet />
+      <MobileMenu />
     </>
   )
 }
