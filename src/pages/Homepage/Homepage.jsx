@@ -1,6 +1,6 @@
 import React from 'react';
 // > css
-import './Homepage.style.css';
+import * as s from './Homepage.style.js';
 // > responsive
 import { Desktop } from '../../hooks/responsive';
 // > components
@@ -15,14 +15,14 @@ import Footer from './components/Footer/Footer';
 const Homepage = () => {
   return (
     <>
-      <div className="homepage_wrapper">
+      <s.Container>
         <Banner />
         <TopRatedMovieSlide />
         <PopularMovieSlide />
         <NowPlayingMovieSlide />
         <TrendingMovieSlide />
         <UpcomingMovieSlide />
-      </div>
+      </s.Container>
       <Desktop>
         <Footer />
       </Desktop>
