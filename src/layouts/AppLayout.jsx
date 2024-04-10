@@ -4,7 +4,7 @@ import './AppLayout.style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBell, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 // > react-router
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 // > responsive
 import { Desktop, Mobile } from '../hooks/responsive';
 // > components
@@ -13,7 +13,13 @@ import SearchForm from './SearchForm/SearchForm';
 const AppLayout = () => {
   const [login, setLogin] = useState(false); // 임시로
   const [SearchFormOpen, setSearchFormOpen] = useState(false);
-  console.log("login상태", SearchFormOpen);
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+  const searchByKeyword = (event) => {
+    event.preventDefault(); // refresh 막기
+    navigate(`/movies?query=${keyword}`); // 검색하면 url 변경
+    setKeyword(""); // keyword 초기화
+  }
 
   return (
     <>
@@ -44,7 +50,9 @@ const AppLayout = () => {
                     SearchFormOpen === true 
                     ?
                     <li className="right-menu-item search-form">
-                      <input type="text" placeholder="search" className="search_input" />
+                      <form onSubmit={ searchByKeyword }>
+                        <input type="text" placeholder="search" className="search_input" value={ keyword } onChange={ (event) => setKeyword(event.target.value) } />
+                      </form>
                     </li>
                     :
                     null
