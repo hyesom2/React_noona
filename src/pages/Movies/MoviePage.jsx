@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMovieSearchQuery } from '../../hooks/useMovieSearch';
 import { useSearchParams } from 'react-router-dom';
 import MovieCard from '../../common/MovieCard/MovieCard';
-// > styled-components
+// > css (styled-components)
 import * as s from './MoviePage.style.js';
 // > pagination
 import ReactPaginate from 'react-paginate';
@@ -12,7 +12,6 @@ const MoviePage = () => {
   const [query] = useSearchParams();
   const keyword = query.get("query");
   const { data } = useMovieSearchQuery({ keyword, page });
-  console.log(data);
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
