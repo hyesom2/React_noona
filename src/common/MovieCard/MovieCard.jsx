@@ -1,6 +1,6 @@
 import React from 'react';
 // > css
-import './MovieCard.style.css';
+import * as s from './MovieCard.style.js';
 // > icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
@@ -25,9 +25,9 @@ const MovieCard = ({ movie }) => {
   }
 
   return (
-    <div className="movie_card" onClick={ getMovieDetails }>
+    <s.Movie_Card onClick={ getMovieDetails }>
       <img src={ `${img_base_url}` + movie?.poster_path } alt={ movie?.title } />
-      <div className="movie_card_info">
+      <s.Movie_Card_Info className="movie_card_info">
         <h3 className="movie_title">{ movie?.title }</h3>
         <ul className="movie_genre_list">
           {
@@ -38,8 +38,8 @@ const MovieCard = ({ movie }) => {
         </ul>
         <p className="movie_release_date">{ movie?.release_date }</p>
         <FontAwesomeIcon icon={faEllipsis} className="icon-more" />
-      </div>
-    </div>
+      </s.Movie_Card_Info>
+    </s.Movie_Card>
   )
 }
 
