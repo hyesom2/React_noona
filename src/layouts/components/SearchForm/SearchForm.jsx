@@ -1,20 +1,22 @@
 import React from 'react';
-import './SearchForm.style.css';
+import * as s from './SearchForm.style.js';
 // > icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-const SearchForm = ({ setSearchFormOpen }) => {
+const SearchForm = ({ setSearchFormOpen, searchByKeyword, keyword, setKeyword }) => {
+
   return (
-    <div className="container">
-      <div className="search_form_header">
-        <FontAwesomeIcon icon={faAngleLeft} onClick={ () => setSearchFormOpen(false) } className="back-icon" />
-        <div className="search_form">
+    <s.Container>
+      <s.Search_Form_Header>
+        <FontAwesomeIcon className="back-icon" icon={faAngleLeft} onClick={ () => setSearchFormOpen(false) } />
+        <s.Search_Form onSubmit={ searchByKeyword }>
           <FontAwesomeIcon className="icon-search" icon={faMagnifyingGlass} />
-          <input type="text" placeholder="search" />
-        </div>
-      </div>
-    </div>
+          <input className="search_input" type="text" placeholder="search" value={ keyword || "" } onChange={ (event) => setKeyword(event.target.value) } />
+          <button className="search_button" type="submit">검색</button>
+        </s.Search_Form>
+      </s.Search_Form_Header>
+    </s.Container>
   )
 }
 
