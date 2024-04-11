@@ -19,6 +19,9 @@ const AppLayout = () => {
     event.preventDefault(); // refresh 막기
     navigate(`/movies?query=${keyword}`); // 검색하면 url 변경
     setKeyword(""); // keyword 초기화
+    if(widthSize <= 1023) {
+      setSearchFormOpen(false);
+    }
   }
   const [widthSize, setWidthSize] = useState(window.innerWidth);
   const handleResize = () => {
@@ -72,9 +75,10 @@ const AppLayout = () => {
                 SearchFormOpen === true 
                 ?
                 <li className="right_menu_item">
-                  <form className="search_form" onSubmit={ searchByKeyword }>
+                  <s.Search_Form onSubmit={ searchByKeyword }>
                     <input className="search_input" type="text" placeholder="search" value={ keyword } onChange={ (event) => setKeyword(event.target.value) } />
-                  </form>
+                    <button type="submit">검색</button>
+                  </s.Search_Form>
                 </li>
                 :
                 null
@@ -83,11 +87,11 @@ const AppLayout = () => {
                 {
                   SearchFormOpen && widthSize <= 1023
                   ?
-                  <SearchForm setSearchFormOpen={ setSearchFormOpen } />
+                  <SearchForm setSearchFormOpen={ setSearchFormOpen } searchByKeyword={ searchByKeyword } keyword={ keyword } setKeyword={ setKeyword } />
                   :
                   null
                 }
-                <FontAwesomeIcon className="menu_icon" icon={faMagnifyingGlass} onClick={ () => setSearchFormOpen(true) } />
+                <FontAwesomeIcon className="menu_icon" icon={faMagnifyingGlass} onClick={ () => setSearchFormOpen(!SearchFormOpen) } />
               </li>
               <li className="right_menu_item">
                 <FontAwesomeIcon className="menu_icon" icon={faBell} />

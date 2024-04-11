@@ -96,10 +96,7 @@ export const Right_Menu_List = styled.ul`
     .search_input {
       display: block;
       width: 150px;
-      height: 25px;
-      background-color: #323232;
-      padding: 0 10px;
-      border-radius: 4px;
+      height: 30px;
     }
 
     .user_profile {
@@ -121,6 +118,21 @@ export const Right_Menu_List = styled.ul`
   @media screen and (max-width: 1023px) {
     .right_menu_item span {
       display: none;
+    }
+  }
+`;
+
+export const Search_Form = styled.form`
+  display: flex;
+  background-color: #323232;
+  padding: 0 20px;
+  border-radius: 4px;
+
+  button {
+    color: #fff;
+
+    &:hover {
+      font-weight: bold;
     }
   }
 `;
