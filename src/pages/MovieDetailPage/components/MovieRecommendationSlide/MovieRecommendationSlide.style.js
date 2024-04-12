@@ -1,0 +1,10 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+  padding: 0 60px;
+
+  .recommendation_title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+`;
