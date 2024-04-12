@@ -1,5 +1,6 @@
 import React from 'react';
-import './Banner.style.css';
+// > css (styled-components)
+import * as s from './Banner.style.js';
 import { usePopularMoviesQuery } from '../../../../hooks/usePopularMovies';
 import { Desktop, Mobile } from '../../../../hooks/responsive';
 
@@ -17,17 +18,17 @@ const Banner = () => {
   return (
     <>
       <Desktop>
-        <div className="banner_background" style={{ backgroundImage: `url(${banner_background_url})`}}>
-          <div className="banner_info">
+        <s.Banner style={{ backgroundImage: `url(${banner_background_url})`}}>
+          <s.Banner_Info>
             <h1 className="banner_info_title">{ data?.results[1].title }</h1>
             <ul className="banner_info_list">
-              <li>{ data?.results[1].release_date }</li>
-              <li>{ data?.results[1].vote_average }</li>
-              <li>{ data?.results[1].original_language }</li>
+              <li className="banner_info_item">{ data?.results[1].release_date }</li>
+              <li className="banner_info_item">{ data?.results[1].vote_average }</li>
+              <li className="banner_info_item">{ data?.results[1].original_language }</li>
             </ul>
             <p className="banner_info_desc">{ data?.results[1].overview}</p>
-          </div>
-        </div>
+          </s.Banner_Info>
+        </s.Banner>
       </Desktop>
       <Mobile>
         <div className="banner_background_mobile" style={{ backgroundImage: `url(${banner_background_url})`}}>
