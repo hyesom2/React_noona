@@ -7,7 +7,7 @@ export const Container = styled.div`
 export const Movie_Detail_Banner = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 480px;
@@ -46,6 +46,7 @@ export const Movie_Detail_Banner_Info = styled.div`
   .banner_info_poster {
     width 200px;
     height: 300px;
+    margin-right: 20px;
 
     img {
       display: block;
@@ -55,9 +56,6 @@ export const Movie_Detail_Banner_Info = styled.div`
   }
 
   .banner_info {
-    display: flex;
-    flex-direction: column;
-
     &_title {
       font-size: 40px;
       margin-bottom: 10px;
