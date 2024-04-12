@@ -149,6 +149,7 @@ export const Movie_Detail_Info = styled.div`
     align-items: center;
     width: 700px;
     height: auto;
+    margin-right: 60px;
 
     .overview {
       font-size: 16px;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // > css (styled-components);
 import * as s from './MovieRecommendationSlide.style.js';
 // > hook
@@ -6,9 +6,11 @@ import { useMovieRecommendationQuery } from '../../../../hooks/useMovieRecommend
 // > slider
 import MovieSlider from '../../../../common/MovieSlider/MovieSlider.jsx';
 import { responsive } from '../../../../constants/SliderResponsive.js';
+import Header from '../../../../Global/components/Header.jsx';
 
 const MovieRecommendation = () => {
   const { data, isLoading, isError, error } = useMovieRecommendationQuery();
+  const [open, setOpen] = useState(false);
 
   if(isLoading) {
     return <h1>Loading...</h1>
@@ -19,7 +21,14 @@ const MovieRecommendation = () => {
 
   return (
     <s.Container>
-      <MovieSlider title="추천 영화" movies={ data?.results } responsive={ responsive }/>
+      <Header title="추천 영화" open={ open } setOpen={ setOpen } />
+      {
+        open === true
+        ?
+        <MovieSlider movies={ data?.results } responsive={ responsive }/>
+        :
+        null
+      }
     </s.Container>
   )
 }
