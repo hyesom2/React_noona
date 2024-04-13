@@ -1,8 +1,6 @@
 import React from 'react';
 // > css
 import * as s from './Homepage.style.js';
-// > responsive
-import { Desktop } from '../../hooks/responsive';
 // > components
 import Banner from './components/Banner/Banner';
 import TopRatedMovieSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide';
@@ -23,9 +21,7 @@ const Homepage = () => {
         <TrendingMovieSlide />
         <UpcomingMovieSlide />
       </s.Container>
-      <Desktop>
-        <Footer />
-      </Desktop>
+      <Footer />
     </>
   )
 }
