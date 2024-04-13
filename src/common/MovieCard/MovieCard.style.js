@@ -29,11 +29,7 @@ export const Movie_Card = styled.div`
   }
 
   @media screen and (max-width: 1023px) {
-    margin-bottom: 20px;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 `;
 
@@ -53,7 +49,6 @@ export const Movie_Card_Info = styled.div`
     margin-bottom: 10px;
     color: #fff;
   }
-
   .movie_genre_list {
     display: flex;
     flex-wrap: wrap;

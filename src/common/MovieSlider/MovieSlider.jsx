@@ -20,11 +20,11 @@ const MovieSlider = ({ title, movies, responsive }) => {
         // centerMode
         // containerClass="container"
         className="slide_container"
-        itemClass="slide_item"
+        itemClass="movie_slide_item"
         draggable
         focusOnSelect={false}
         infinite
-        autoPlay
+        // autoPlay
         minimumTouchDrag={80}
         pauseOnHover
         renderArrowsWhenDisabled={false}

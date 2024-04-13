@@ -8,4 +8,12 @@ export const Container = styled.div`
     color: #E5E5E5;
     margin-bottom: 10px;
   }
+
+  .slide_container {
+    width: 100%;
+  }
+
+  .react-multi-carousel-item {
+    width: 270px;
+  }
 `;
