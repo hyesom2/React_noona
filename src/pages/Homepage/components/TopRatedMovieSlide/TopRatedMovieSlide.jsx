@@ -1,6 +1,6 @@
 import React from 'react';
-// > css
-import './TopRatedMovieSlide.style.css';
+// > css (styled-components)
+import * as s from './TopRatedMovieSlide.style.js';
 // > hooks
 import { useTopRatedMoviesQuery } from '../../../../hooks/useTopRatedMovies';
 // > slider
@@ -17,9 +17,9 @@ const TopRatedMovieSlide = () => {
   }
 
   return (
-    <div className="top_rated_slide">
-      <MovieSlider title="Top Rated Movies" movies={ data.results } responsive={ responsive } />
-    </div>
+    <s.Container>
+      <MovieSlider title="TOP 20 영화들" movies={ data.results } responsive={ responsive } />
+    </s.Container>
   )
 }
 
