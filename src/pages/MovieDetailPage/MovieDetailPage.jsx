@@ -57,10 +57,17 @@ const MovieDetailPage = () => {
           <p className="overview">{ data?.overview }</p>
         </div>
         <ul className="movie_info_list">
-          <li className="movie_info_item">장르 : </li>
-          <li className="movie_info_item">평점 : { data?.vote_average }점</li>
-          <li className="movie_info_item">개봉일 : { data?.release_date }</li>
-          <li className="movie_info_item">상영시간 : { data?.runtime }분</li>
+          <li className="movie_info_item">
+          <strong className="title">장르</strong>           
+          {
+            data?.genres.map((genre, index) => (
+              <span key={ index } className="genres">{ genre.name }</span>
+            ))
+          }
+          </li>
+          <li className="movie_info_item"><strong className="title">평점</strong><span>{ data?.vote_average }점</span></li>
+          <li className="movie_info_item"><strong className="title">개봉일</strong><span>{ data?.release_date }</span></li>
+          <li className="movie_info_item"><strong className="title">상영시간</strong><span>{ data?.runtime }분</span></li>
         </ul>
       </s.Movie_Detail_Info>
       <MoviePreview />

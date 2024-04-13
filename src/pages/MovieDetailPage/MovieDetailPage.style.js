@@ -162,8 +162,29 @@ export const Movie_Detail_Info = styled.div`
     width: 300px;
   }
   .movie_info_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 14px;
     margin-bottom: 10px;
+
+    .title::after {
+      content: ":";
+      margin: 0 6px;
+    }
+
+    .genres{
+      margin-right: 6px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
 
     &:last-child {
       margin-bottom: 0;
