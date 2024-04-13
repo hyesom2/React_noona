@@ -15,11 +15,13 @@ const Homepage = () => {
     <>
       <s.Container>
         <Banner />
-        <TopRatedMovieSlide />
-        <PopularMovieSlide />
-        <NowPlayingMovieSlide />
-        <TrendingMovieSlide />
-        <UpcomingMovieSlide />
+        <s.SlideWrap>
+          <TopRatedMovieSlide />
+          <PopularMovieSlide />
+          <NowPlayingMovieSlide />
+          <TrendingMovieSlide />
+          <UpcomingMovieSlide />
+        </s.SlideWrap>
       </s.Container>
       <Footer />
     </>
