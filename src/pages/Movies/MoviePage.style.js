@@ -29,4 +29,12 @@ export const Filter = styled.div`
   font-weight: bold;
   color: #fff;
   cursor: pointer;
+
+  @media screen and (max-width: 1023px) {
+
+  }
+
+  @media screen and (max-width: 767px) {
+    right: 20px;
+  }
 `;

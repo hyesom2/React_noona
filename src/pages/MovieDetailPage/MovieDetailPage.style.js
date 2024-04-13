@@ -1,10 +1,30 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  position: relative;
   padding-bottom: 48px;
+
+  .icon_back {
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 100;
+  }
 
   @media screen and (max-width: 1023px) {
     padding-bottom: 58px;
+
+    .icon_back {
+      left: 30px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .icon_back {
+      left: 20px;
+    }
   }
 `;
 

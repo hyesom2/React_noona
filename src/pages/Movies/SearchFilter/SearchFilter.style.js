@@ -40,6 +40,11 @@ export const Container = styled.div`
       font-weight: bold;
     }
   }
+
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+    height: 100vh;
+  }
 `;
 
 export const ButtonGroup = styled.button`

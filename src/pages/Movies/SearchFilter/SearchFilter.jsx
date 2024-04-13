@@ -19,7 +19,7 @@ const SearchFilter = ({ genreData, setSortCategory, setGenreCategory, setSortOpe
       <ul className="sort_list">
         {
           genreData?.map((genre) => (
-            <li key={ genre.id } onClick={ () => setGenreCategory(genre.id) } className="sort_item">{ genre.name }</li>
+            <li key={ genre.id } onClick={ () => {setGenreCategory(genre.id); setSortOpen(false);} } className="sort_item">{ genre.name }</li>
           ))
         }
       </ul>

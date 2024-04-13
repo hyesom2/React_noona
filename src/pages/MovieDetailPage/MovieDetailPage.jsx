@@ -3,9 +3,9 @@ import React from 'react';
 import * as s from './MovieDetailPage.style.js';
 // > icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPlus, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPlus, faThumbsUp, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 // > router
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 // > hook
 import { useMovieDetailQuery } from '../../hooks/useMovieDetails';
 // > components
@@ -18,9 +18,11 @@ const MovieDetailPage = () => {
   const movie_poster_url = `https://media.themoviedb.org/t/p/w300_and_h450_bestv2/`;
   const { id } = useParams();
   const { data } = useMovieDetailQuery(id);
+  const navigate = useNavigate();
 
   return (
     <s.Container>
+      <FontAwesomeIcon icon={faChevronLeft} className="icon_back" onClick={ () => navigate(-1) } />
       <s.Movie_Detail_Banner>
         <img src={ `${movie_background_url}` + data?.backdrop_path } alt="" className="detail_bg" />
         <s.Movie_Detail_Banner_Info>
