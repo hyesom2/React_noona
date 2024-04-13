@@ -1,5 +1,5 @@
 import React from 'react';
-// > css
+// > css (styled-components)
 import * as s from './MovieCard.style.js';
 // > icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,7 +7,7 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 // > react-router
 import { useNavigate } from 'react-router-dom';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
-// > 
+// > component
 import TopRatedBadge from "../../pages/Homepage/components/TopRatedBadge/TopRatedBadge.jsx";
 
 const MovieCard = ({ movie, title, index }) => {
@@ -21,6 +21,7 @@ const MovieCard = ({ movie, title, index }) => {
     });
     return genreNameList;
   };
+
   const navigate = useNavigate();
   const getMovieDetails = () => {
     navigate(`/movies/${movie?.id}`)
@@ -29,7 +30,7 @@ const MovieCard = ({ movie, title, index }) => {
   return (
     <s.Movie_Card onClick={ getMovieDetails }>
       {
-        title === "Top Rated Movies"
+        title === "TOP 20 영화들"
         ?
         <TopRatedBadge index={ index } />
         :
