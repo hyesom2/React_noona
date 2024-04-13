@@ -1,6 +1,6 @@
 import React from 'react';
-// > css
-import './NowPlayingMovieSlide.style.css';
+// > css (styled-components)
+import * as s from './NowPlayingMovieSlide.style.js';
 // > hooks
 import { useNowPlayingMoviesQuery } from '../../../../hooks/useNowPlayingMovies';
 // > slider
@@ -17,9 +17,9 @@ const NowPlayingMovieSlide = () => {
   }
 
   return (
-    <div className="now_playing_slide">
-      <MovieSlider title="Now Playing Movies" movies={ data.results } responsive={ responsive }/>
-    </div>
+    <s.Container>
+      <MovieSlider title="현재 상영 중인 영화" movies={ data.results } responsive={ responsive }/>
+    </s.Container>
   )
 }
 
