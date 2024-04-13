@@ -1,51 +1,82 @@
-import React, { useState } from 'react';
-import { useMovieSearchQuery } from '../../hooks/useMovieSearch';
-import { useSearchParams } from 'react-router-dom';
-import MovieCard from '../../common/MovieCard/MovieCard';
+import React, { useState, useEffect } from 'react';
 // > css (styled-components)
 import * as s from './MoviePage.style.js';
-// > pagination
-import ReactPaginate from 'react-paginate';
+// > icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+// > hooks
+import { useMovieSearchQuery } from '../../hooks/useMovieSearch';
+import { useMovieGenreQuery } from '../../hooks/useMovieGenre.js';
+import { useSearchParams } from 'react-router-dom';
+// > components
+import MovieCard from '../../common/MovieCard/MovieCard.jsx';
+import Paginate from '../../common/Paginate/Paginate.jsx';
+import SearchFilter from './SearchFilter/SearchFilter.jsx';
 
 const MoviePage = () => {
+  const [sortOpen, setSortOpen] = useState(false);
   const [page, setPage] = useState(1);
+  const [genreCategory, setGenreCategory] = useState("");
+  const [sortCategory, setSortCategory] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  
   const [query] = useSearchParams();
   const keyword = query.get("query");
   const { data } = useMovieSearchQuery({ keyword, page });
+  const { data:genreData } = useMovieGenreQuery();
 
-  const handlePageClick = ({ selected }) => {
-    setPage(selected + 1);
-  };
+  useEffect(() => {
+    let movie_data = data?.results || [];
+
+    if(sortCategory) {
+      if(sortCategory === "popular_asc") {
+        movie_data = movie_data.sort((a, b) => b.popularity - a.popularity);
+      }
+      if(sortCategory === "popular_desc") {
+        movie_data = movie_data.sort((a, b) => a.popularity - b.popularity);
+      }
+    };
+
+    if(genreCategory) {
+      movie_data = movie_data.filter((movie) => 
+        movie.genre_ids.includes(genreCategory)
+      );
+      setFilteredMovies(movie_data);
+    }
+
+    // eslint-disable-next-line
+  }, [sortCategory, genreCategory, data])
 
   return (
     <s.Container>
-      <div className="searched">
+      <s.Filter onClick={ () => setSortOpen(true) }>
+        <FontAwesomeIcon icon={faFilter} />
+      </s.Filter>
+      {
+        sortOpen === true
+        ?
+        <SearchFilter 
+          genreData={ genreData } 
+          setSortCategory={ setSortCategory } 
+          setGenreCategory={ setGenreCategory }
+          setSortOpen={ setSortOpen }/>
+        :
+        null
+      }
+      <s.searchedMovies> 
         {
+          sortCategory === "" && genreCategory === ""
+          ?
           data?.results.map((movie, index) => (
             <MovieCard movie={ movie } key={ index } />
           ))
+          :
+          filteredMovies?.map((movie, index) => (
+            <MovieCard movie={ movie } key={ index} />
+          ))
         }
-      </div>
-      <ReactPaginate
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={1}
-        pageCount={ data?.total_results / data?.total_pages }
-        previousLabel="<"
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        breakLabel="..."
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        containerClassName="pagination"
-        activeClassName="active"
-        renderOnZeroPageCount={page - 1}
-      />
+      </s.searchedMovies>
+      <Paginate data={ data } page={ page } setPage={ setPage }/>
     </s.Container>
   )
 }
