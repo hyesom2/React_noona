@@ -33,14 +33,14 @@ const MoviePreview = () => {
             data?.results.slice(0, 5).map((player, index) => (
               <div className="player" key={index}>
                 <YouTube videoId={ player.key } opts={opts} />
-                <span>{ player.name }</span>
+                <span className="player_title">{ player.name }</span>
               </div>
             ))
             :
             data?.results.map((player, index) => (
               <div className="player" key={index}>
                 <YouTube videoId={ player.key } opts={opts} />
-                <span>{ player.name }</span>
+                <span className="player_title">{ player.name }</span>
               </div>
             ))
           }

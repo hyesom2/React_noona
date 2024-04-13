@@ -30,6 +30,10 @@ export const Container = styled.div`
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 
+    &_title {
+      margin-left: 10px;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
