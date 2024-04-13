@@ -25,7 +25,7 @@ const MovieRecommendation = () => {
       {
         open === true
         ?
-        <MovieSlider movies={ data?.results } responsive={ responsive }/>
+        <MovieSlider movies={ data?.results } responsive={ responsive } />
         :
         null
       }

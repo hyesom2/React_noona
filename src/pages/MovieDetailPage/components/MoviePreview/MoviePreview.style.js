@@ -5,11 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 0 60px;
 
-  .preview_title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
   .player_wrap {
     display: flex;
     flex-direction: column;
@@ -36,6 +31,26 @@ export const Container = styled.div`
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    padding: 0 40px;
+
+    .player_wrap {
+      margin-bottom: 35px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 0 20px;
+
+    .player {
+      &_title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 `;
