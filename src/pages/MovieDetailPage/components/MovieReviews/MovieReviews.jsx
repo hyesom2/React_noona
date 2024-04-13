@@ -12,6 +12,7 @@ const MovieReviews = () => {
   const [open, setOpen] = useState(false);
   const { id } = useParams();
   const { data:review } = useMovieReviewsQuery(id);
+  console.log(review);
 
   return (
     <s.Container>
@@ -22,9 +23,13 @@ const MovieReviews = () => {
         {
           open === true 
           ?
-          review?.results.map((review_item, index) => (
-            <MovieReviewCard review={ review_item } key={ index }/> 
-          ))
+            review.results.length === 0
+            ?
+            <span>작성된 리뷰가 없습니다.</span>
+            :
+            review?.results.map((review_item, index) => (
+              <MovieReviewCard review={ review_item } key={ index }/> 
+            ))
           :
           null
         }
