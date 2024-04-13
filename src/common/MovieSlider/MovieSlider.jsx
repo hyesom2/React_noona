@@ -1,14 +1,14 @@
 import React from 'react';
+import * as s from "./MovieSlider.style.js";
 // > react-multi-carousel
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 // > components
 import MovieCard from '../MovieCard/MovieCard';
-import TopRatedBadge from '../../pages/Homepage/components/TopRatedBadge/TopRatedBadge';
 
 const MovieSlider = ({ title, movies, responsive }) => {
   return (
-    <div>
+    <s.Container>
       <h1 className="top_rated_title">{ title }</h1>
       <Carousel
         responsive={responsive}
@@ -32,21 +32,12 @@ const MovieSlider = ({ title, movies, responsive }) => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
       >
         {
-          title === "Top Rated Movies"
-          ?
           movies && movies.map((movie, index) => (
-            <div style={{position: "relative"}} key={index}>
-              <TopRatedBadge index={ index }/>
-              <MovieCard movie={movie} />
-            </div>
-          ))
-          :
-          movies && movies.map((movie, index) => (
-            <MovieCard movie={movie} key={index} />
+            <MovieCard movie={movie} title={ title } index={ index } key={ index } />
           ))
         }
       </Carousel>
-    </div>
+    </s.Container>
   )
 }
 
