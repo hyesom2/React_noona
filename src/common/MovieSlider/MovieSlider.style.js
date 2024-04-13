@@ -16,4 +16,16 @@ export const Container = styled.div`
   .react-multi-carousel-item {
     width: 270px;
   }
+  
+  @media screen and (max-width: 1023px) {
+    .react-multi-carousel-item {
+      width: 200px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 `;

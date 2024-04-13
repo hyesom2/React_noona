@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding-bottom: 48px;
+
+  @media screen and (max-width: 1023px) {
+    padding-bottom: 58px;
+  }
 `;
 
 export const Movie_Detail_Banner = styled.div`
@@ -33,6 +37,24 @@ export const Movie_Detail_Banner = styled.div`
     background: linear-gradient(to bottom, transparent, #141414);
     z-index: 99;
   }
+
+  @media screen and (max-width: 1023px) {
+    height: 400px;
+    padding: 0 40px;
+
+    &::before {
+      height: 400px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 350px;
+    padding: 0 20px;
+
+    &::before {
+      height: 350px;
+    }
+  }
 `;
 
 export const Movie_Detail_Banner_Info = styled.div`
@@ -63,13 +85,23 @@ export const Movie_Detail_Banner_Info = styled.div`
 
     &_tagline {
       font-size: 14px;
-      margin-bottom: 10px;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 767px) {
+    .banner_info_poster {
+      display: none;
     }
   }
 `;
 
 export const Info_Button_List = styled.ul`
   display: flex;
+  margin-top: 10px;
 
   .info_button_item {
     margin-right: 8px;
@@ -104,6 +136,11 @@ export const Info_Button_List = styled.ul`
         }
       }
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -140,7 +177,7 @@ export const Movie_Detail_Info = styled.div`
   justify-content: space-between;
   padding: 0 60px;
   margin-bottom: 48px;
-  
+
   .movie_info {
     display: flex;
     justify-content: center;
@@ -161,12 +198,39 @@ export const Movie_Detail_Info = styled.div`
     align-items: flex-start;
     width: 300px;
   }
+
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+    flex-direction: column;
+    padding: 0 40px;
+    margin-bottom: 35px;
+
+    .movie_info {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+
+      .overview {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
   .movie_info_item {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 14px;
     margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     .title::after {
       content: ":";
@@ -184,10 +248,6 @@ export const Movie_Detail_Info = styled.div`
       &:last-child {
         margin-right: 0;
       }
-    }
-
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 `;
