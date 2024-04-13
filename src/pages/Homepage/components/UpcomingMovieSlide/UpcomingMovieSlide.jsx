@@ -1,6 +1,6 @@
-import React from 'react';
-// > css
-import './UpcomingMovieSlide.style.css';
+import React from "react";
+// > css (styled-components)
+import * as s from "./UpcomingMovieSlide.style.js";
 // > hooks
 import { useUpcomingMoviesQuery } from '../../../../hooks/useUpcomingMovies';
 // > slider
@@ -17,9 +17,9 @@ const UpcomingMovieSlide = () => {
   }
 
   return (
-    <div className="upcoming_slide">
-      <MovieSlider title="Upcoming Movies" movies={ data.results } responsive={ responsive } />
-    </div>
+    <s.Container>
+      <MovieSlider title="개봉 예정 영화" movies={ data.results } responsive={ responsive } />
+    </s.Container>
   )
 }
 
