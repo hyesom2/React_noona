@@ -6,7 +6,6 @@ import Banner from './components/Banner/Banner';
 import TopRatedMovieSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide';
 import PopularMovieSlide from './components/PopularMovieSlide/PopularMovieSlide';
 import NowPlayingMovieSlide from './components/NowPlayingMovieSlide/NowPlayingMovieSlide';
-import TrendingMovieSlide from './components/TrendingMovieSlide/TrendingMovieSlide';
 import UpcomingMovieSlide from './components/UpcomingMovieSlide/UpcomingMovieSlide';
 import Footer from './components/Footer/Footer';
 
@@ -19,7 +18,6 @@ const Homepage = () => {
           <TopRatedMovieSlide />
           <PopularMovieSlide />
           <NowPlayingMovieSlide />
-          <TrendingMovieSlide />
           <UpcomingMovieSlide />
         </s.SlideWrap>
       </s.Container>
