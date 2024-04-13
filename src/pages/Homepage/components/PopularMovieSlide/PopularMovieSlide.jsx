@@ -1,6 +1,6 @@
-import React from 'react';
-// > css
-import './PopularMovieSlide.style.css';
+import React from "react";
+// > css (styled-components)
+import * as s from "./PopularMovieSlide.style.js";
 // > hooks
 import { usePopularMoviesQuery } from '../../../../hooks/usePopularMovies';
 // > slider
@@ -17,9 +17,9 @@ const PopularMovieSlide = () => {
   }
 
   return (
-    <div className="popular_slide">
-      <MovieSlider title="Popular Movies" movies={ data.results } responsive={ responsive } />
-    </div>
+    <s.Container>
+      <MovieSlider title="인기 영화" movies={ data.results } responsive={ responsive } />
+    </s.Container>
   )
 }
 
