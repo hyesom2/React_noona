@@ -1,12 +1,13 @@
-import React from 'react'
-import './TopRatedBadge.style.css';
+import React from "react";
+// > css (styled-components)
+import * as s from "./TopRatedBadge.style.js";
 
 const TopRatedBadge = ({ index }) => {
   return (
-    <div className="top_rated_badge">
+    <s.Rank_Badge>
       <strong>TOP</strong>
       <span>{ index + 1 }</span>
-    </div>
+    </s.Rank_Badge>
   )
 }
 
