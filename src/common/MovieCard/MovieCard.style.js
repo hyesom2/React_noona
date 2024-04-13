@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Movie_Card = styled.div`
   position: relative;
   width: 270px;
-  height: 200px;
-  transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
+  height: 300px;
+  padding: 10px;
+  transition: transform 500ms ease-in-out, opacity 300ms ease-in-out;
 
   img {
     display: block;
@@ -19,9 +20,8 @@ export const Movie_Card = styled.div`
 
   &:hover {
     cursor: pointer;
-    height: 450px;
-    transform: scale(0.9);
     opacity: 0.7;
+    transform: scale(1.1);
 
     .movie_card_info {
       display: block;

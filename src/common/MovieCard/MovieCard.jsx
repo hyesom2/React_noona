@@ -7,8 +7,10 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 // > react-router
 import { useNavigate } from 'react-router-dom';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
+// > 
+import TopRatedBadge from "../../pages/Homepage/components/TopRatedBadge/TopRatedBadge.jsx";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, title, index }) => {
   const img_base_url = `https://media.themoviedb.org/t/p/w300_and_h450_bestv2/`;
   const { data:genreData } = useMovieGenreQuery(); // data:genreData는 data이름을 genreData로 재정의한다는 뜻
   const showGenre = (genreIdList) => {
@@ -26,6 +28,13 @@ const MovieCard = ({ movie }) => {
 
   return (
     <s.Movie_Card onClick={ getMovieDetails }>
+      {
+        title === "Top Rated Movies"
+        ?
+        <TopRatedBadge index={ index } />
+        :
+        null
+      }
       <img src={ `${img_base_url}` + movie?.poster_path } alt={ movie?.title } />
       <s.Movie_Card_Info className="movie_card_info">
         <h3 className="movie_title">{ movie?.title }</h3>
