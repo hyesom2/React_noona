@@ -1,4 +1,5 @@
 import React from 'react';
+// > css (styled-components)
 import * as s from "./MovieSlider.style.js";
 // > react-multi-carousel
 import Carousel from "react-multi-carousel";
@@ -9,7 +10,7 @@ import MovieCard from '../MovieCard/MovieCard';
 const MovieSlider = ({ title, movies, responsive }) => {
   return (
     <s.Container>
-      <h1 className="top_rated_title">{ title }</h1>
+      <h1 className="movie_slider_title">{ title }</h1>
       <Carousel
         responsive={responsive}
         additionalTransfrom={0}
