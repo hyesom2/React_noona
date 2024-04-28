@@ -1,0 +1,29 @@
+.how-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 600px;
+  z-index: 10;
+
+  @media screen and (max-width: 600px) {
+    width: 360px;
+    height: 500px;
+  }
+}
+
+.how-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.how-wrap button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 35px;
+  color: #fff;
+}
