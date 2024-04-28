@@ -1,0 +1,23 @@
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+}
+button {
+  width: 100px;
+  font-size: 16px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #eee;
+}
+button:last-child {
+  margin-right: 0;
+}
+button:hover {
+  background-color: #ddd;
+}
+button.is-active {
+  background-color: #aaa;
+}
