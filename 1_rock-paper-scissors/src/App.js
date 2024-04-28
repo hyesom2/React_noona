@@ -1,8 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-import './App.css';
-import Box from './components/Box';
-import How from './components/How';
+import React, { useState } from 'react';
+// > css
+import * as s from './App.styled.js';
+// > components
+import Box from './components/Box.js';
+import How from './components/How.js';
 
 const choice = {
   rock: {
@@ -64,18 +65,25 @@ const App = () => {
   const modalHandler = () => {
     setModal(!modal);
   }
+  const resetClicked = () => {
+    setUserCount(0); 
+    setComputerCount(0); 
+    setUserSelect(null);
+    setComputerSelect(null);
+    setResult("");
+  }
 
   return (
-    <div className="wrap">
-      <div className="count">{ userCount } : { computerCount }</div>
-      <button className="how" type="button" onClick={() => modalHandler()}>게임<br />설명</button>
-      <button className="reset" type="button" onClick={() => { setUserCount(0); setComputerCount(0);}}>RESET</button>
-      <div className="box-wrap">
+    <s.Container>
+      <s.Count>{ userCount } : { computerCount }</s.Count>
+      <s.How type="button" onClick={ () => modalHandler() }>게임<br />설명</s.How>
+      <s.Reset type="button" onClick={ () => resetClicked() }>RESET</s.Reset>
+      <s.BoxWrap>
         <Box title="Player" item={ userSelect } result={ result } />
         <img className="vs" src={ `${process.env.PUBLIC_URL}images/vs.png` } alt="vs" />
-        <Box title="Computer" item={ computerSelect } result={ result} />
-      </div>
-      <div className="button-group">
+        <Box title="Computer" item={ computerSelect } result={ result } />
+      </s.BoxWrap>
+      <s.ButtonGroup>
         <button className="button scissors" type="button" onClick={ () => play("rock") }>
           <img src={`${process.env.PUBLIC_URL}images/rock.png`} alt="주먹" />
         </button>
@@ -85,18 +93,18 @@ const App = () => {
         <button className="button scissors" type="button" onClick={ () => play("paper") }>
           <img src={`${process.env.PUBLIC_URL}images/paper.png`} alt="보" />
         </button>
-      </div>
+      </s.ButtonGroup>
       {
         modal 
         ?
         <div>
           <How modal={ modal } modalHandler={ modalHandler } />
-          <div className="overlay" onClick={ modalHandler }></div>
+          <s.Overlay onClick={ modalHandler } />
         </div>
         :
         null
       }
-    </div>
+    </s.Container>
   )
 }
 
